@@ -1,0 +1,213 @@
+/* BankStyles.css (Revised to follow dark theme from theme.css) */
+
+:root {
+    /* Inherit main theme colors */
+    --primary: #06b6d4;      /* cyan-500 */
+    --secondary: #94a3b8;    /* slate-400 (muted) */
+    --success: #22c55e;      /* green */
+    --danger: #ef4444;       /* red */
+    --bg: #0f172a;           /* slate-900 */
+    --card: #111827;         /* gray-900 */
+    --text: #e5e7eb;         /* gray-200 */
+    --border-color: rgba(255, 255, 255, 0.08); /* Lighter border for dark mode */
+    --input-bg: #0b1220;
+    --shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Ensure global box-sizing consistency */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.bank-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 24px; /* Increased padding */
+    background: var(--card); /* Dark card background */
+    color: var(--text); /* Light text */
+    box-shadow: var(--shadow);
+    border-radius: var(--radius, 12px);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Utility Classes --- */
+.text-danger { color: var(--danger); }
+.text-success { color: var(--success); }
+.message-box {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+}
+.message-success { background-color: rgba(34, 197, 94, 0.2); color: var(--success); border: 1px solid var(--success); }
+.message-error { background-color: rgba(239, 68, 68, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+
+
+/* --- Form & Input Styles (Aligned with theme.css) --- */
+.bank-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg); /* Slightly darker than card for contrast */
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.bank-form label {
+    font-weight: bold;
+    color: var(--secondary); /* Use muted color for label */
+}
+
+.bank-form input,
+.bank-form select {
+    background: var(--input-bg); /* Match input style from theme.css */
+    border: 1px solid var(--border-color);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.bank-form button,
+.action-panel button { /* Apply common button styles */
+    /* Mimic .apply-btn style */
+    background: var(--primary);
+    color: black; /* Text is black against bright primary */
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.bank-form button:hover:not(:disabled),
+.action-panel button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.35); /* Match hover effect */
+}
+.bank-form button:disabled,
+.action-panel button:disabled {
+    background-color: var(--secondary);
+    color: var(--card);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* --- Dashboard Specific Styles --- */
+.dashboard-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* Use theme primary color for divider */
+    border-bottom: 2px solid var(--primary);
+}
+
+.dashboard-header h2 {
+    color: var(--primary);
+    margin: 0;
+}
+
+.loan-list {
+    margin-top: 20px;
+}
+
+.loan-item {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 18px; /* Slightly larger padding */
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap */
+    background: var(--input-bg); /* Use input/darker background for list item contrast */
+}
+
+@media (min-width: 768px) {
+    .loan-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.loan-info {
+    flex-grow: 1;
+}
+
+.loan-info h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+.loan-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--secondary);
+}
+.loan-info code {
+    background-color: var(--bg); /* Dark background for code block */
+    color: var(--primary);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+
+/* --- Loan Status Colors (Retained the visual hierarchy but with dark-mode colors) --- */
+.loan-status-text {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: black; /* Ensures text is visible against bright status colors */
+    display: inline-block;
+}
+
+/* Updated background colors to fit the dark theme palette better */
+.status-initiated { background-color: var(--secondary); color: var(--bg); }
+.status-accepted { background-color: var(--success); }
+.status-paid { background-color: var(--primary); }
+.status-unpaid { background-color: var(--danger); }
+.status-completed, .status-closed { background-color: #a855f7; } /* Use a darker purple/indigo for completed/closed */
+
+/* --- Action Panel (Dropdown & Button) --- */
+.action-panel {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap; 
+    /* Ensure action panel doesn't stretch loan info too much */
+    min-width: 70px; 
+    justify-content: flex-end;
+}
+.action-panel select {
+    min-width: 150px;
+    flex-grow: 1;
+    /* Inherit input styling */
+    background: var(--input-bg);
+    color: var(--text);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+}
+/* Button styles defined above in .bank-form button */
+
+.action-panel button.close-button {
+    background-color: var(--danger);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+.action-panel button.close-button:hover:not(:disabled) {
+    background-color: #c82333; /* Slightly darker red on hover */
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
+}
