@@ -1,0 +1,13 @@
+create venv and install all packages.
+
+python app.py --> for backend
+
+node install
+
+npm run dev ---> for frontend
+
+
+
+Bank password:-
+
+HDFC:-bank@123
