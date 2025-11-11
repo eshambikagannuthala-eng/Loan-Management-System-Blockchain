@@ -1,6 +1,5 @@
 // Dashboard.tsx
-
-import React, { useState, useMemo } from 'react';
+import { useState, } from 'react';
 // Assuming this component fetches and displays the entire blockchain
 import FullBlockChainViewer from '../components/Blockchain/fullChainViewer';
 // Assuming the component to view a single loan's chain exists and takes a numeric ID

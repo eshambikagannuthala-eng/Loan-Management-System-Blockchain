@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-// Import your API function to fetch the entire blockchain
 import { loanBlocks } from '../../api/blockchain';
+import { useEffect, useState } from 'react';
 
 // 1. Define the Block type to match the structure returned by listAllBlocks
 type Block = {
@@ -45,21 +44,21 @@ export default function SingleLoanViewer({ loanId }: SingleLoanViewerProps){
         // 3. Map the API response fields to the display fields (using the new type)
         // Note: The API response fields are already close enough, but we'll map them 
         // to be explicit for display.
-        const formattedBlocks = allBlocks.map(block => ({
-            id: block.id,
-            loan_id: block.loanId, // Use loanId from API
-            transaction_data: block.transaction, // Use transaction from API
-            current_hash: block.currentHash, // Use currentHash from API
-            previous_hash: block.previousHash, // Use previousHash from API
-            // Include other necessary fields for the Block type defined above
-            bankName: block.bankName,
-            metadata: block.metadata,
-            createdAt: block.createdAt,
-        })) as unknown as Block[]; // Cast back to Block[]
+        // const formattedBlocks = allBlocks.map(block => ({
+        //     id: block.id,
+        //     loan_id: block.loanId, // Use loanId from API
+        //     transaction_data: block.transaction, // Use transaction from API
+        //     current_hash: block.currentHash, // Use currentHash from API
+        //     previous_hash: block.previousHash, // Use previousHash from API
+        //     // Include other necessary fields for the Block type defined above
+        //     bankName: block.bankName,
+        //     metadata: block.metadata,
+        //     createdAt: block.createdAt,
+        // })) as unknown as Block[]; // Cast back to Block[]
         
-        // Since we didn't update the Block type definition within the component
-        // for simplicity, we use the raw data and update the render logic.
-        // Let's use the actual API fields directly:
+        // // Since we didn't update the Block type definition within the component
+        // // for simplicity, we use the raw data and update the render logic.
+        // // Let's use the actual API fields directly:
         
         setBlocks(allBlocks as unknown as Block[]);
 

@@ -43,7 +43,6 @@ export default function LoanChatbot({ onInitiated }: { onInitiated: (loanId: str
 
   const update = (key: string, value: any) => setForm((f: any) => ({ ...f, [key]: value }));
 
-  const next = () => setIdx(i => Math.min(i + 1, steps.length - 1));
   const prev = () => setIdx(i => Math.max(i - 1, 0));
 
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>, key: string, multiple = false) => {

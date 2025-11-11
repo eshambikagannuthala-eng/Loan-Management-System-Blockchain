@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import LoanChatbot from '../components/Chatbot/LoanChatbot';
 import ChainViewer from '../components/Blockchain/ChainViewer';
+import { useState } from 'react';
 
 export default function LoanApply() {
   const [loanId, setLoanId] = useState<string>('');
